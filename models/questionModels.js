@@ -35,6 +35,19 @@ const questionSchema = mongoose.Schema(
 				"Please enter description!"
 			]
 		},
+		category: {
+			type: String,
+			enum: [
+				"Easy",
+				"Medium",
+				"Hard"
+			],
+			default: "Easy",
+			required: [
+				true,
+				"Please enter category!"
+			]
+		},
 		constraint: {
 			type: String,
 			required: [
@@ -42,11 +55,18 @@ const questionSchema = mongoose.Schema(
 				"Please enter constraint!"
 			]
 		},
-		testcase: {
+		input: {
 			type: String,
 			required: [
 				true,
-				"Please enter testcase!"
+				"Please enter sample input!"
+			]
+		},
+		output: {
+			type: String,
+			required: [
+				true,
+				"Please enter sample output!"
 			]
 		}
 	},
