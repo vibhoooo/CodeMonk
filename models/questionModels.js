@@ -68,6 +68,13 @@ const questionSchema = mongoose.Schema(
 				true,
 				"Please enter sample output!"
 			]
+		},
+		lang: {
+			type: String,
+			required: [
+				true,
+				"Please select langauge!"
+			]
 		}
 	},
 	{
