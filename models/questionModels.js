@@ -71,6 +71,12 @@ const questionSchema = mongoose.Schema(
 		},
 		lang: {
 			type: String,
+			enum: [
+				"C",
+				"C++",
+				"Java",
+				"Python"
+			],
 			required: [
 				true,
 				"Please select langauge!"
