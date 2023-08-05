@@ -17,7 +17,6 @@ router.route(
 router.route(
 	"/login"
 ).post(
-	validateTokenHandlerAdmin,
 	loginAdmin
 );
 router.route(

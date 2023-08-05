@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema(
 				true,
 				"email already taken!"
 			]
-
+ 
 		},
 		password: {
 			type: String,

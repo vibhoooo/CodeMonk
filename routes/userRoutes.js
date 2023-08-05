@@ -15,7 +15,6 @@ router.route(
 router.route(
 	"/login"
 ).post(
-	validateTokenHandlerUser,
 	loginUser
 );
 router.route(

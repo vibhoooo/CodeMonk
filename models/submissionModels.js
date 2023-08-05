@@ -34,12 +34,18 @@ const submissionSchema = mongoose.Schema(
 				"Please write some code!"
 			]
 		},
-		language: {
+		lang: {
 			type: String,
+			enum: [
+				"C",
+				"C++",
+				"Java",
+				"Python"
+			],
 			required: [
 				true,
-				"Please select language!"
-			],
+				"Please select langauge!"
+			]
 		},
 		status: {
 			type: String,
