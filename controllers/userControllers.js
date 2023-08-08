@@ -108,7 +108,8 @@ const loginUser = asyncHandler(
 				)
 				.json(
 					{
-						accessToken
+						accessToken,
+						role: "User"
 					}
 				);
 		}
@@ -140,11 +141,120 @@ const postSubmission = asyncHandler(
 	}
 );
 // @desc Get all questions
-// @route GET /users/questions/get
+// @route GET /users/questions/get?page=${page}
 // @access private
 const getAllQuestions = asyncHandler(
 	async (req, res) => {
-
+		const problems1 = [
+			{
+				id: 1,
+				title: 'Problem 1',
+				category: 'Easy'
+			},
+			{
+				id: 2,
+				title: 'Problem 2',
+				category: 'Medium'
+			},
+			{
+				id: 3,
+				title: 'Problem 3',
+				category: 'Hard'
+			},
+			{
+				id: 4,
+				title: 'Problem 4',
+				category: 'Medium'
+			},
+			{
+				id: 5,
+				title: 'Problem 5',
+				category: 'Hard'
+			}
+		];
+		const problems2 = [
+			{
+				id: 6,
+				title: 'Problem 1',
+				category: 'Easy'
+			},
+			{
+				id: 7,
+				title: 'Problem 2',
+				category: 'Medium'
+			},
+			{
+				id: 8,
+				title: 'Problem 3',
+				category: 'Hard'
+			},
+			{
+				id: 9,
+				title: 'Problem 4',
+				category: 'Medium'
+			},
+			{
+				id: 10,
+				title: 'Problem 5',
+				category: 'Hard'
+			}
+		];
+		const problems3 = [
+			{
+				id: 6,
+				title: 'Problem 1',
+				category: 'Easy'
+			},
+			{
+				id: 7,
+				title: 'Problem 2',
+				category: 'Medium'
+			},
+			{
+				id: 8,
+				title: 'Problem 3',
+				category: 'Hard'
+			},
+			{
+				id: 9,
+				title: 'Problem 4',
+				category: 'Medium'
+			},
+			{
+				id: 10,
+				title: 'Problem 5',
+				category: 'Hard'
+			}
+		];
+		const allProblems = [...problems1, ...problems2, ...problems3];
+		const itemsPerPage = 5;
+		const currentPage = req.query.page;
+		try {
+			const startIndex = (currentPage - 1) * itemsPerPage;
+			const endIndex = currentPage * itemsPerPage;
+			const problems = allProblems.slice(startIndex, endIndex);
+			res
+				.status(
+					200
+				)
+				.json(
+					{
+						currentPage: currentPage,
+						totalPages: Math.ceil(allProblems.length / itemsPerPage),
+						totalProblems: allProblems.length,
+						problems: problems,
+					}
+				);
+		}
+		catch(error) {
+			res
+				.status(
+					500
+				);
+			throw new Error(
+				"Internal Server Error!"
+			);
+		}
 	}
 );
 // @desc Get a question
