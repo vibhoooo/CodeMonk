@@ -99,7 +99,7 @@ const loginAdmin = asyncHandler(
 				},
 				process.env.ACCESS_TOKEN_SECRET_ADMIN,
 				{
-					expiresIn: "30m"
+					expiresIn: "60m"
 				}
 			);
 			res
@@ -166,7 +166,7 @@ const getAllQuestions = asyncHandler(
 				title: 'Problem 4',
 				category: 'Medium'
 			},
-			{
+			{ 
 				id: 5,
 				title: 'Problem 5',
 				category: 'Hard'
@@ -199,7 +199,34 @@ const getAllQuestions = asyncHandler(
 				category: 'Hard'
 			}
 		];
-		const allProblems = [...problems1, ...problems2];
+		const problems3 = [
+			{
+				id: 6,
+				title: 'Problem 1',
+				category: 'Easy'
+			},
+			{
+				id: 7,
+				title: 'Problem 2',
+				category: 'Medium'
+			},
+			{
+				id: 8,
+				title: 'Problem 3',
+				category: 'Hard'
+			},
+			{
+				id: 9,
+				title: 'Problem 4',
+				category: 'Medium'
+			},
+			{
+				id: 10,
+				title: 'Problem 5',
+				category: 'Hard'
+			}
+		];
+		const allProblems = [...problems1, ...problems2, ...problems3];
 		const itemsPerPage = 5;
 		const currentPage = req.query.page || 1;
 		try {
@@ -235,7 +262,39 @@ const getAllQuestions = asyncHandler(
 // @access private
 const getQuestion = asyncHandler(
 	async (req, res) => {
-
+		const problem = [
+			{
+				title: "Problem 1",
+				description: "This is description",
+				input: "This is sample input",
+				output: "This is sample output",
+				constraint: "This is constraint"
+			}
+		];
+		try {
+			res
+				.status(
+					200
+				)
+				.json(
+					{
+						title: problem[0].title,
+						description: problem[0].description,
+						input: problem[0].input,
+						output: problem[0].output,
+						constraint: problem[0].constraint,
+					}
+				);
+		}
+		catch (error) {
+			res
+				.status(
+					500
+				);
+			throw new Error(
+				"Internal Server Error!"
+			);
+		}
 	}
 );
 // @desc Post a question 

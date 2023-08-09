@@ -99,7 +99,7 @@ const loginUser = asyncHandler(
 				},
 				process.env.ACCESS_TOKEN_SECRET_USER,
 				{
-					expiresIn: "30m"
+					expiresIn: "60m"
 				}
 			);
 			res
@@ -133,7 +133,7 @@ const getSubmission = asyncHandler(
 	}
 );
 // @desc Post a submission
-// @route POST /users/submissions/post
+// @route POST 
 // @access private
 const postSubmission = asyncHandler(
 	async (req, res) => {
@@ -262,7 +262,39 @@ const getAllQuestions = asyncHandler(
 // @access private
 const getQuestion = asyncHandler(
 	async (req, res) => {
-
+		const problem = [
+			{
+				title: "Problem 1",
+				description: "This is description",
+				input: "This is sample input",
+				output: "This is sample output",
+				constraint: "This is constraint"
+			}
+		]; 
+		try  {
+			res
+				.status(
+					200
+				)
+				.json(
+					{
+						title: problem[0].title,
+						description: problem[0].description,
+						input: problem[0].input,
+						output: problem[0].output,
+						constraint: problem[0].constraint,
+					}
+				);
+		}
+		catch (error) {
+			res
+				.status(
+					500
+				);
+			throw new Error(
+				"Internal Server Error!"
+			);
+		}
 	}
 );
 module.exports = { 
