@@ -258,7 +258,7 @@ const getAllQuestions = asyncHandler(
 	}
 );
 // @desc Get a question
-// @route GET /users/questions/get/:id
+// @route GET  
 // @access private
 const getQuestion = asyncHandler(
 	async (req, res) => {

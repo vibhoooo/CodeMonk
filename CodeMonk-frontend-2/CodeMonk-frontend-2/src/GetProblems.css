@@ -1,0 +1,35 @@
+#problems-table table {
+	margin: 2em auto 2em;
+	border-collapse: collapse;
+	width: 100%;
+
+}
+
+#problems-table thead th {
+	padding: 0.5em 1em;
+	border: 3px solid black;
+
+}
+
+#problems-table tr {
+	border: 0.0009px solid black;
+
+}
+
+#problems-table td {
+	padding: 1em;
+	margin: 0.2 auto;
+
+}
+
+.page {
+	margin: 3px;
+	padding: 1em 2em;
+	border: 0.8px solid rgb(0, 0, 0);
+	border-radius: 5px;
+}
+
+#page-buttons {
+	margin: 0 auto;
+	text-align: center;
+}
