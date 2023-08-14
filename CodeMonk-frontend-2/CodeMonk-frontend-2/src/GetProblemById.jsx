@@ -117,8 +117,8 @@ int main()
 		setUserCode(defaultCode[selectedLanguage]);
 	}, [selectedLanguage]);
 	return (
-		<div id="problem-solving-area">
-			<div id="left-section">
+		<div id='problem-solving-area'>
+			<div id='left-section'>
 				<h1>{title}</h1>
 				<span>
 					<h5>Description</h5>
@@ -126,55 +126,55 @@ int main()
 				</span>
 				<div>
 					<h5>Testcase</h5>
-					<span className="testcases">
+					<span className='testcases'>
 						<h5>Sample Input:</h5>
 						<p>{input}</p>
 					</span>
-					<span className="testcases">
+					<span className='testcases'>
 						<h5>Sample Output:</h5>
 						<p>{output}</p>
 					</span>
-					<span className="testcases">
+					<span className='testcases'>
 						<h5>Constraint:</h5>
 						<p>{constraint}</p>
 					</span>
 				</div>
 			</div>
-			<div id="right-section">
+			<div id='right-section'>
 				<h3>Your code goes here!</h3>
 				<form>
 					<label>
 						<input
-							type="radio"
-							value="C"
-							checked={selectedLanguage === "C"}
+							type='radio'
+							value='C'
+							checked={selectedLanguage === 'C'}
 							onChange={handleLanguageChange}
 						/>
 						C
 					</label>
 					<label>
 						<input
-							type="radio"
-							value="C++"
-							checked={selectedLanguage === "C++"}
+							type='radio'
+							value='C++'
+							checked={selectedLanguage === 'C++'}
 							onChange={handleLanguageChange}
 						/>
 						C++
 					</label>
 					<label>
 						<input
-							type="radio"
-							value="Java"
-							checked={selectedLanguage === "Java"}
+							type='radio'
+							value='Java'
+							checked={selectedLanguage === 'Java'}
 							onChange={handleLanguageChange}
 						/>
 						Java
 					</label>
 					<label>
 						<input
-							type="radio"
-							value="Python"
-							checked={selectedLanguage === "Python"}
+							type='radio'
+							value='Python'
+							checked={selectedLanguage === 'Python'}
 							onChange={handleLanguageChange}
 						/>
 						Python
@@ -182,11 +182,11 @@ int main()
 				</form>
 				<textarea
 					required
-					id="solution-area"
+					id='solution-area'
 					value={userCode}
 					onChange={handleCodeChange}
 				></textarea>
-				<button id="button-submit" onClick={handleClick}>
+				<button id='button-submit' onClick={handleClick}>
 					Submit
 				</button>
 			</div>

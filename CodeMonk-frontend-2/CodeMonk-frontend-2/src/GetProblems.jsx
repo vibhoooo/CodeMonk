@@ -1,15 +1,18 @@
 import './GetProblems.css';
 import Problem from './Problem';
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function GetProblems() {
 	const [problems, setProblems] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(1);
+	const navigate = useNavigate();
 	const handlePageChange = (page) => {
 		setCurrentPage(page);
 	};
 	const role = localStorage.getItem('role');
+	const isAdmin = role === 'Admin';
 	const fetchProblems = async (page) => {
 		if(role == 'User') {
 			try {
@@ -71,8 +74,18 @@ function GetProblems() {
 		[currentPage]
 	);
 	return (
-		<div id="problems-table">
+		<div id='problems-table'>
 			<h1>All Problems</h1>
+			{
+				isAdmin && (
+					<button 
+						className={`add-button ${isAdmin ? 'visible' : 'hidden'}`}
+						onClick={() => navigate('/problems/post')}
+					>
+						Add Problems
+					</button>
+				)
+			}
 			<div id='page-buttons'>
 				{
 					Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
