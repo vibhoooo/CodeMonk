@@ -119,6 +119,7 @@ int main()
 	return (
 		<div id='problem-solving-area'>
 			<div id='left-section'>
+				<h1>{id}</h1>
 				<h1>{title}</h1>
 				<span>
 					<h5>Description</h5>
