@@ -69,19 +69,6 @@ const questionSchema = mongoose.Schema(
 				"Please enter sample output!"
 			]
 		},
-		lang: {
-			type: String,
-			enum: [
-				"C",
-				"C++",
-				"Java",
-				"Python"
-			],
-			required: [
-				true,
-				"Please select langauge!"
-			]
-		}
 	},
 	{
 		timestamps: true
