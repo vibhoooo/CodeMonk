@@ -3,6 +3,7 @@ const submissionSchema = mongoose.Schema(
 	{
 		question_id: {
 			type: String,
+			required: true,
 			unique: [
 				true,
 				"question_id already taken!"
@@ -10,10 +11,12 @@ const submissionSchema = mongoose.Schema(
 		},
 		user_id: {
 			type: mongoose.Schema.Types.ObjectId,
+			required: true,
 			ref: "User"
 		},
 		admin_id: {
 			type: mongoose.Schema.Types.ObjectId,
+			required: true,
 			ref: "Admin"
 		},
 		title: {
