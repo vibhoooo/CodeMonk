@@ -82,7 +82,7 @@ function GetProblems() {
 						className={`add-button ${isAdmin ? 'visible' : 'hidden'}`}
 						onClick={() => navigate('/problems/post')}
 					>
-						Add Problems
+						Add Problem
 					</button>
 				)
 			}

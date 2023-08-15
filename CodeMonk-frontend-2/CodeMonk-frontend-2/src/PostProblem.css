@@ -1,0 +1,46 @@
+#add-problem-form {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#add-problem-form h1 {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+#add-problem-form form {
+	display: grid;
+	gap: 10px;
+}
+
+#add-problem-form label {
+	font-weight: bold;
+	display: block;
+}
+
+#add-problem-form input,
+#add-problem-form textarea {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+#add-problem-form button {
+	background-color: green;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+#add-problem-form button:hover {
+	background-color: green;
+}

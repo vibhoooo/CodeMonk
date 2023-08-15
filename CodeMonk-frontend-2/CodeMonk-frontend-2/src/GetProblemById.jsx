@@ -89,7 +89,7 @@ int main()
 
     return 0;
 }`,
-		"C++": `#include <iostream>
+		'C++': `#include <iostream>
 using namespace std;
 
 int main()
