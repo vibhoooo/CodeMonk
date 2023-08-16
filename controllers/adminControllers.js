@@ -10,7 +10,7 @@ const Question = require("../models/questionModels");
 const signupAdmin = asyncHandler(
 	async (req, res) => {
 		const { adminname, email, password } = req.body;
-		if (!adminname || !email || !password) {
+		if(!adminname || !email || !password) {
 			res
 				.status(
 					400
@@ -24,7 +24,7 @@ const signupAdmin = asyncHandler(
 				email
 			}
 		);
-		if (adminAvailable) {
+		if(adminAvailable) {
 			res
 				.status(
 					400
@@ -44,15 +44,15 @@ const signupAdmin = asyncHandler(
 				password: hashedPassword
 			}
 		);
-		if (admin) {
+		if(admin) {
 			res
 				.status(
 					201
 				)
 				.json(
 					{
-						id: admin.id,
-						email: admin.email
+						admin_id: admin.id,
+						admin_email: admin.email
 					}
 				);
 		}
@@ -73,7 +73,7 @@ const signupAdmin = asyncHandler(
 const loginAdmin = asyncHandler(
 	async (req, res) => {
 		const { email, password } = req.body;
-		if (!email || !password) {
+		if(!email || !password) {
 			res
 				.status(
 					400
@@ -87,13 +87,13 @@ const loginAdmin = asyncHandler(
 				email
 			}
 		);
-		if (admin && (await bcrypt.compare(password, admin.password))) {
+		if(admin && (await bcrypt.compare(password, admin.password))) {
 			const accessToken = jwt.sign(
 				{
 					admin: {
 						adminname: admin.adminname,
-						email: admin.email,
-						id: admin.id,
+						admin_email: admin.email,
+						admin_id: admin.id,
 						role: "Admin"
 					}
 				},
@@ -302,7 +302,73 @@ const getQuestion = asyncHandler(
 // @access private
 const postQuestion = asyncHandler(
 	async (req, res) => {
-
+		console.log("hola1");
+		const { question_id, title, description, category, constraint, input, output } = req.body;
+		if(!question_id) {
+			res
+				.status(
+					400
+				);
+			throw new Error(
+				"All fields are mandatory!"
+			);
+		}
+		console.log("hola2");
+		const questionAvailable = await Question.findOne(
+			{
+				question_id,
+				title
+			}
+		);
+		console.log("hola3");
+		if(questionAvailable) {
+			res
+				.status(
+					400
+				);
+			throw new Error(
+				"Question with same question_id or title already exists!"
+			);
+		}
+		console.log("hola4");
+		const question = await Question.create(
+			{
+				question_id,
+				title,
+				description,
+				category,
+				constraint,
+				input,
+				output
+			}
+		);
+		console.log("hola5");
+		if(question) {
+			res
+				.status(
+					201
+				)
+				.json(
+					{
+						question_id: question.question_id,
+						title: question.title,
+						description: question.description,
+						category: question.category,
+						constraint: question.constraint,
+						input: question.input,
+						output: question.output
+					}
+				);
+		}
+		else {
+			res
+				.status(
+					500
+				);
+			throw new Error(
+				"Problem adding failed!"
+			);
+		}
 	}
 );
 module.exports = {
