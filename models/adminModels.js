@@ -26,7 +26,7 @@ const adminSchema = mongoose.Schema(
 				true,
 				"Please enter password!"
 			]
-		},
+		}
 	},
 	{
 		timestamps: true
