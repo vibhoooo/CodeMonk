@@ -51,8 +51,8 @@ const signupUser = asyncHandler(
 				)
 				.json(
 					{
-						id: user.id,
-						email: user.email
+						user_id: user.id,
+						user_email: user.email
 					}
 				);
 		}
@@ -92,8 +92,8 @@ const loginUser = asyncHandler(
 				{
 					user: {
 						username: user.username,
-						email: user.email,
-						id: user.id,
+						user_email: user.email,
+						user_id: user.id,
 						role: "User"
 					}
 				},
