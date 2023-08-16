@@ -10,7 +10,7 @@ const Question = require("../models/questionModels");
 const signupUser = asyncHandler(
 	async (req, res) => {
 		const { username, email, password } = req.body;
-		if (!username || !email || !password) {
+		if(!username || !email || !password) {
 			res
 				.status(
 					400
@@ -24,7 +24,7 @@ const signupUser = asyncHandler(
 				email
 			}
 		);
-		if (userAvailable) {
+		if(userAvailable) {
 			res
 				.status(
 					400
@@ -44,7 +44,7 @@ const signupUser = asyncHandler(
 				password: hashedPassword
 			}
 		);
-		if (user) {
+		if(user) {
 			res
 				.status(
 					201
@@ -73,7 +73,7 @@ const signupUser = asyncHandler(
 const loginUser = asyncHandler(
 	async (req, res) => {
 		const { email, password } = req.body;
-		if (!email || !password) {
+		if(!email || !password) {
 			res
 				.status(
 					400
@@ -87,7 +87,7 @@ const loginUser = asyncHandler(
 				email
 			}
 		);
-		if (user && (await bcrypt.compare(password, user.password))) {
+		if(user && (await bcrypt.compare(password, user.password))) {
 			const accessToken = jwt.sign(
 				{
 					user: {
