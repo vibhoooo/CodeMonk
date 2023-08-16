@@ -10,20 +10,26 @@ function PostProblem() {
 	const [sampleInput, setSampleInput] = useState('');
 	const [sampleOutput, setSampleOutput] = useState('');
 	const [constraint, setConstraint] = useState('');
+	const [category, setCategory] = useState('');
 	const handleFormSubmit = async (event) =>  {
 		event.preventDefault();
+		if (!id || !title || !description || !sampleInput || !sampleOutput || !constraint || !category) {
+			alert('All fields are mandatory!');
+			return;
+		}
 		const problemData = {
 			id,
 			title,
 			description,
 			sampleInput,
 			sampleOutput,
-			constraint
+			constraint,
+			category
 		};
 		try {
 			const accessToken = localStorage.getItem('accessToken');
 			const response = await fetch(
-				`http://localhost:3000//admins/questions/post`,
+				`http://localhost:3000/admins/questions/post`,
 				{
 					method: 'POST',
 					headers: {
@@ -49,7 +55,7 @@ function PostProblem() {
 	};
 	return (
 		<div id='add-problem-form'>
-			<h1>Add a Problem</h1>
+			<h1>Add Problem</h1>
 			<form onSubmit={handleFormSubmit}>
 				<label>
 					Problem ID:
@@ -57,7 +63,6 @@ function PostProblem() {
 						type='text'
 						value={id}
 						onChange={(event) => setId(event.target.value)}
-						required
 					/>
 				</label>
 				<label>
@@ -66,7 +71,6 @@ function PostProblem() {
 						type='text'
 						value={title}
 						onChange={(event) => setTitle(event.target.value)}
-						required
 					/>
 				</label>
 				<label>
@@ -74,7 +78,6 @@ function PostProblem() {
 					<textarea
 						value={description}
 						onChange={(event) => setDescription(event.target.value)}
-						required
 					/>
 				</label>
 				<label>
@@ -82,7 +85,6 @@ function PostProblem() {
 					<textarea
 						value={sampleInput}
 						onChange={(event) => setSampleInput(event.target.value)}
-						required
 					/>
 				</label>
 				<label>
@@ -90,7 +92,6 @@ function PostProblem() {
 					<textarea
 						value={sampleOutput}
 						onChange={(event) => setSampleOutput(event.target.value)}
-						required
 					/>
 				</label>
 				<label>
@@ -98,7 +99,13 @@ function PostProblem() {
 					<textarea
 						value={constraint}
 						onChange={(event) => setConstraint(event.target.value)}
-						required
+					/>
+				</label>
+				<label>
+					Category:
+					<textarea
+						value={category}
+						onChange={(event) => setCategory(event.target.value)}
 					/>
 				</label>
 				<button type='submit'>Add Problem</button>
