@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema(
 				true,
 				"Please enter password!"
 			]
-		},
+		}
 	},
 	{
 		timestamps: true
