@@ -3,7 +3,6 @@ const questionSchema = mongoose.Schema(
 	{
 		admin_id: {
 			type: mongoose.Schema.Types.ObjectId,
-			required: true,
 			ref: "Admin"
 		},
 		question_id: {
@@ -68,7 +67,7 @@ const questionSchema = mongoose.Schema(
 				true,
 				"Please enter sample output!"
 			]
-		},
+		}
 	},
 	{
 		timestamps: true
