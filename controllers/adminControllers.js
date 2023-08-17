@@ -312,6 +312,15 @@ const postQuestion = asyncHandler(
 				"All fields are mandatory!"
 			);
 		}
+		if(category !== "Easy" || category !== 'Medium' || category !== 'Hard') {
+			res
+				.status(
+					400
+				);
+			throw new Error(
+				"Incorrect category!"
+			);
+		}
 		const questionAvailable = await Question.findOne(
 			{
 				question_id,
