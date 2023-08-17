@@ -113,8 +113,8 @@ function GetProblems() {
 					{
 						problems.map((problem) => (
 							<Problem
-							key={problem.id}
-							id={problem.id}
+							key={problem.question_id}
+							id={problem.question_id}
 							title={problem.title}
 							category={problem.category}
 							/>
