@@ -13,18 +13,18 @@ function PostProblem() {
 	const [category, setCategory] = useState('');
 	const handleFormSubmit = async (event) =>  {
 		event.preventDefault();
-		if (!id || !title || !description || !sampleInput || !sampleOutput || !constraint || !category) {
+		if (!id || !title || !description || !category || !constraint || !sampleInput || !sampleOutput) {
 			alert('All fields are mandatory!');
 			return;
 		}
 		const problemData = {
-			id,
+			question_id: id,
 			title,
 			description,
-			sampleInput,
-			sampleOutput,
+			category,
 			constraint,
-			category
+			input: sampleInput,
+			output: sampleOutput
 		};
 		try {
 			const accessToken = localStorage.getItem('accessToken');
@@ -81,6 +81,20 @@ function PostProblem() {
 					/>
 				</label>
 				<label>
+					Category:
+					<textarea
+						value={category}
+						onChange={(event) => setCategory(event.target.value)}
+					/>
+				</label>
+				<label>
+					Constraint:
+					<textarea
+						value={constraint}
+						onChange={(event) => setConstraint(event.target.value)}
+					/>
+				</label>
+				<label>
 					Sample Input:
 					<textarea
 						value={sampleInput}
@@ -92,20 +106,6 @@ function PostProblem() {
 					<textarea
 						value={sampleOutput}
 						onChange={(event) => setSampleOutput(event.target.value)}
-					/>
-				</label>
-				<label>
-					Constraint:
-					<textarea
-						value={constraint}
-						onChange={(event) => setConstraint(event.target.value)}
-					/>
-				</label>
-				<label>
-					Category:
-					<textarea
-						value={category}
-						onChange={(event) => setCategory(event.target.value)}
 					/>
 				</label>
 				<button type='submit'>Add Problem</button>
