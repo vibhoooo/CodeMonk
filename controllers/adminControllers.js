@@ -302,9 +302,8 @@ const getQuestion = asyncHandler(
 // @access private
 const postQuestion = asyncHandler(
 	async (req, res) => {
-		console.log("hola1");
 		const { question_id, title, description, category, constraint, input, output } = req.body;
-		if(!question_id) {
+		if (!question_id || !title || !description || !category || !constraint || !input || !output) {
 			res
 				.status(
 					400
@@ -313,14 +312,12 @@ const postQuestion = asyncHandler(
 				"All fields are mandatory!"
 			);
 		}
-		console.log("hola2");
 		const questionAvailable = await Question.findOne(
 			{
 				question_id,
 				title
 			}
 		);
-		console.log("hola3");
 		if(questionAvailable) {
 			res
 				.status(
@@ -330,7 +327,6 @@ const postQuestion = asyncHandler(
 				"Question with same question_id or title already exists!"
 			);
 		}
-		console.log("hola4");
 		const question = await Question.create(
 			{
 				question_id,
@@ -342,7 +338,6 @@ const postQuestion = asyncHandler(
 				output
 			}
 		);
-		console.log("hola5");
 		if(question) {
 			res
 				.status(
