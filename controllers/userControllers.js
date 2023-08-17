@@ -145,88 +145,7 @@ const postSubmission = asyncHandler(
 // @access private
 const getAllQuestions = asyncHandler(
 	async (req, res) => {
-		const problems1 = [
-			{
-				id: 1,
-				title: 'Problem 1',
-				category: 'Easy'
-			},
-			{
-				id: 2,
-				title: 'Problem 2',
-				category: 'Medium'
-			},
-			{
-				id: 3,
-				title: 'Problem 3',
-				category: 'Hard'
-			},
-			{
-				id: 4,
-				title: 'Problem 4',
-				category: 'Medium'
-			},
-			{
-				id: 5,
-				title: 'Problem 5',
-				category: 'Hard'
-			}
-		];
-		const problems2 = [
-			{
-				id: 6,
-				title: 'Problem 1',
-				category: 'Easy'
-			},
-			{
-				id: 7,
-				title: 'Problem 2',
-				category: 'Medium'
-			},
-			{
-				id: 8,
-				title: 'Problem 3',
-				category: 'Hard'
-			},
-			{
-				id: 9,
-				title: 'Problem 4',
-				category: 'Medium'
-			},
-			{
-				id: 10,
-				title: 'Problem 5',
-				category: 'Hard'
-			}
-		];
-		const problems3 = [
-			{
-				id: 6,
-				title: 'Problem 1',
-				category: 'Easy'
-			},
-			{
-				id: 7,
-				title: 'Problem 2',
-				category: 'Medium'
-			},
-			{
-				id: 8,
-				title: 'Problem 3',
-				category: 'Hard'
-			},
-			{
-				id: 9,
-				title: 'Problem 4',
-				category: 'Medium'
-			},
-			{
-				id: 10,
-				title: 'Problem 5',
-				category: 'Hard'
-			}
-		];
-		const allProblems = [...problems1, ...problems2, ...problems3];
+		const allProblems = await Question.find();
 		const itemsPerPage = 5;
 		const currentPage = req.query.page;
 		try {
@@ -262,15 +181,7 @@ const getAllQuestions = asyncHandler(
 // @access private
 const getQuestion = asyncHandler(
 	async (req, res) => {
-		const problem = [
-			{
-				title: "Problem 1",
-				description: "This is description",
-				input: "This is sample input",
-				output: "This is sample output",
-				constraint: "This is constraint"
-			}
-		]; 
+		const problem = await Question.find();
 		try  {
 			res
 				.status(
